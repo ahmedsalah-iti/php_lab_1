@@ -1,12 +1,20 @@
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
 <?php
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 include('cap.php');
+include('add.php');
 function isValidLen($pass){
     return strlen($pass) > 7;
 }
+
 function welcome($name,$gender,$username,$address,$dep,$skills){
+    $lineData = "";
     $mr_miss = "Animal";
     $username = htmlspecialchars($username);
     $address= htmlspecialchars($address);
@@ -21,14 +29,27 @@ function welcome($name,$gender,$username,$address,$dep,$skills){
     echo "UserName: $username <br>";
     echo "Address: $address <br>";
     echo "Department: $dep <br>";
+    myConcat($lineData,$mr_miss);
+    myConcat($lineData,$name);
+    myConcat($lineData,$username);
+    myConcat($lineData,$address);
+    myConcat($lineData,$dep);
+    $lineDataSkills ="";
     if (is_array($skills)){
     echo "Skills:<br>";
     foreach($skills as $skill){
         $skill = htmlspecialchars($skill);
         echo "- $skill <br>";
+        myConcat($lineDataSkills,$skill,"$$$");
     }
     }
-
+    myConcat($lineData,$lineDataSkills);
+    if (saveToFile($lineData)){
+        echo '<h1>Data is Saved Successfuly</h1>';
+        fileDataToHtmlTable();
+    }else{
+        echo '<h1>failed to save your data.</h1>';
+    }
 }
 if ($_SERVER['REQUEST_METHOD'] === "POST"){
 

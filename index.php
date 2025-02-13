@@ -15,7 +15,7 @@ include('cap.php');
             <div class="col-md-6 col-lg-6">
                 <div class="card p-4 shadow-sm">
                     <h4 class="text-center mb-4">Registeration</h4>
-                    <form action="login.php">
+                    <form action="login.php" method="post">
                         <div class="mb-3">
                             <label for="fname" class="form-label">First Name</label>
                             <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your first name">
