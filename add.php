@@ -43,11 +43,14 @@ function fileDataToHtmlTable(){
                 foreach ($splitData as $record){
                     if ($splitData[count($splitData)-1]!=$record)
                     {
+                        
                         $table_row_data = $table_row_data."<th>".$record."</th>";
                     }else{
                    
 
-
+                        if (trim($record) == ""){
+                            continue;
+                        }
                         $skills_data_arr = explode("$$$",$splitData[count($splitData)-1]);
                         if (count($skills_data_arr) > 0){
                         $table_row_data = $table_row_data."<th><ul>";

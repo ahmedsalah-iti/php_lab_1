@@ -1,8 +1,4 @@
-<style>
-table, th, td {
-  border:1px solid black;
-}
-</style>
+
 <?php
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
